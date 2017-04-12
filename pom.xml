@@ -55,7 +55,8 @@
 		<module>zkserver</module>
 		<module>zkclient</module>
 		<module>eureka-server</module>
-		<module>eureka-service-provider</module>
+		
+		<module>eureka-client</module>
 	</modules>
 	<artifactId>spring-cloud-example</artifactId>
 </project>
