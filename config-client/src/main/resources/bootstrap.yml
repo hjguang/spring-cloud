@@ -4,7 +4,7 @@ spring:
   cloud:
     config:
       uri: http://localhost:8888
- #     profile: ${profile}
+      profile: ${profile}
 
 server:
   port: 8090

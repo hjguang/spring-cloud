@@ -6,7 +6,7 @@ spring:
       server:
         git:
 #          uri: https://github.com/hjguang/{application}
-            uri: https://github.com/hjguang/cloud-config
+          uri: https://github.com/hjguang/cloud-config
 management:
   security:
     enabled: false
