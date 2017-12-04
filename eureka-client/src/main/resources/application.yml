@@ -6,4 +6,4 @@ eureka:
     register-with-eureka: false
 
   server:
-    name: eurekaServer
+    name: BIZ-SERVICE

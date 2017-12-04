@@ -32,7 +32,7 @@ public class EurekaClientApp {
 
 	@RequestMapping(value = "/{user}")
 	public String hello(@PathVariable("user") String user) {
-		return restTemplate.getForEntity("http://" +eurekaServer +"/hello/"+ user, String.class).getBody();
+		return restTemplate.getForEntity("http://BIZ-SERVICE/hello/"+ user, String.class).getBody();
 	}
 	
 	public static void main(String[] args) {
