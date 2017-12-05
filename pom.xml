@@ -8,10 +8,10 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.5.1.RELEASE</version>
+		<version>1.5.8.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	
+
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
@@ -21,10 +21,25 @@
 			<dependency>
 				<groupId>org.springframework.cloud</groupId>
 				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>Dalston.BUILD-SNAPSHOT</version>
+				<version>Edgware.RELEASE</version>
 				<type>pom</type>
 				<scope>import</scope>
-			</dependency> 
+			</dependency>
+			<dependency>
+				<groupId>net.logstash.logback</groupId>
+				<artifactId>logstash-logback-encoder</artifactId>
+				<version>4.6</version>
+			</dependency>
+			<dependency>
+				<groupId>io.springfox</groupId>
+				<artifactId>springfox-swagger2</artifactId>
+				<version>2.3.1</version>
+			</dependency>
+			<dependency>
+				<groupId>io.springfox</groupId>
+				<artifactId>springfox-swagger-ui</artifactId>
+				<version>2.3.1</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
@@ -59,15 +74,17 @@
 		<module>zkserver</module>
 		<module>zkclient</module>
 		<module>eureka-server</module>
-		
+
 		<module>eureka-client</module>
 		<module>config-server</module>
 		<module>config-client</module>
-		<module>app-service</module>
+		
 		<module>biz-service</module>
 		<module>biz-client</module>
-		<module>biz-service-apigatway</module>
+		
 		<module>hystrix-dashboard</module>
+		
+		<module>api-gateway</module>
 	</modules>
-	<artifactId>spring-cloud-example</artifactId>
+	<artifactId>spring-cloud</artifactId>
 </project>

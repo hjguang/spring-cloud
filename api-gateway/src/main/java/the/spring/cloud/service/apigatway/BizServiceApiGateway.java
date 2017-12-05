@@ -2,12 +2,16 @@ package the.spring.cloud.service.apigatway;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
+import org.springframework.cloud.sleuth.sampler.AlwaysSampler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
@@ -18,14 +22,20 @@ import org.springframework.web.client.RestTemplate;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
-//import springfox.documentation.swagger2.annotations.EnableSwagger2;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @EnableZuulProxy
 @EnableDiscoveryClient
 @SpringBootApplication
 @CrossOrigin
-//@EnableSwagger2 
+@EnableSwagger2 
+@EnableCircuitBreaker
 public class BizServiceApiGateway {
+	
+	@Bean
+	  public AlwaysSampler defaultSampler() {
+	    return new AlwaysSampler();
+	}
 
 	@Bean
 	public CustomZuulFilter customFilter() {
@@ -39,26 +49,44 @@ public class BizServiceApiGateway {
 }
 
 @RestController 
-class SearchAPIGatewayController {
+class ApiGatewayController {
 
 	@RequestMapping("/")
-	String greet(HttpServletRequest req){
-		return "<H1>Search Gateway Powered By Zuul</H1>"; 
+	String home(HttpServletRequest req){
+		return "<H1>Zuul API Gateway Home!</H1>"; 
 	}
 }
 
+@RestController
+class BizApiGatewayController {
+	private static final Logger logger = LoggerFactory.getLogger(BizApiGatewayController.class);
+	
+	@Autowired
+	BizAPIGatewayComponent component;
+	
+	@RequestMapping("/getBook")
+	String getHub(Integer id, HttpServletRequest request){
+		logger.info("获取书籍信息,跳转到biz-service微服务中,参数:{}", id);
+		return component.getBook(id); 
+	} 
+}
+
 @Component	
-class SearchAPIGatewayComponent { 
+class BizAPIGatewayComponent { 
+	
+	private static final Logger logger = LoggerFactory.getLogger(BizAPIGatewayComponent.class);
+	
  	@Autowired 
 	RestTemplate restTemplate;
 
-	@HystrixCommand(fallbackMethod = "getDefaultHub")
-	public String getHub(){
-		String hub = restTemplate.getForObject("http://biz-service/hello/hub", String.class);
-		return hub;
+	@HystrixCommand(fallbackMethod = "getDefaultInfo")
+	public String getBook(Integer id){
+		String result = restTemplate.getForObject("http://biz-service/book/" + id, String.class);
+		logger.info("{}", result);
+		return result;
 	}
-	public String getDefaultHub(){
-		return "Possibily SFO";
+	public String getDefaultInfo(Integer id){
+		return "The Default Book Info";
 	}
 }
 

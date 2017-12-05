@@ -1,0 +1,18 @@
+server:
+  port:  8777
+  
+spring:
+  application:
+    name: api-gateway
+
+zuul:
+  routes:
+    api-gateway:
+      service-id: biz-service
+      path: /book/**
+      stripPrefix: false #设置为false 重定向是带book，否则则反
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
