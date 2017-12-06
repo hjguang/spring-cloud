@@ -85,6 +85,8 @@
 		<module>hystrix-dashboard</module>
 		
 		<module>api-gateway</module>
+		<module>customer-service</module>
+		<module>turbine</module>
 	</modules>
 	<artifactId>spring-cloud</artifactId>
 </project>

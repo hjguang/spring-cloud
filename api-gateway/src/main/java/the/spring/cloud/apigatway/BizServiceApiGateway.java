@@ -1,4 +1,4 @@
-package the.spring.cloud.service.apigatway;
+package the.spring.cloud.apigatway;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -28,74 +28,87 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableDiscoveryClient
 @SpringBootApplication
 @CrossOrigin
-@EnableSwagger2 
+@EnableSwagger2
 @EnableCircuitBreaker
 public class BizServiceApiGateway {
-	
+
 	@Bean
-	  public AlwaysSampler defaultSampler() {
-	    return new AlwaysSampler();
+	public AlwaysSampler defaultSampler() {
+		return new AlwaysSampler();
 	}
 
 	@Bean
 	public CustomZuulFilter customFilter() {
 		return new CustomZuulFilter();
 	}
-	
+
 	public static void main(String[] args) {
 		SpringApplication.run(BizServiceApiGateway.class, args);
 	}
-	
+
 }
 
-@RestController 
+@RestController
 class ApiGatewayController {
 
 	@RequestMapping("/")
-	String home(HttpServletRequest req){
-		return "<H1>Zuul API Gateway Home!</H1>"; 
+	String home(HttpServletRequest req) {
+		return "<H1>Zuul API Gateway Home!</H1>";
 	}
 }
 
 @RestController
 class BizApiGatewayController {
 	private static final Logger logger = LoggerFactory.getLogger(BizApiGatewayController.class);
-	
+
 	@Autowired
 	BizAPIGatewayComponent component;
-	
+
 	@RequestMapping("/getBook")
-	String getHub(Integer id, HttpServletRequest request){
+	String getBook(Integer id, HttpServletRequest request) {
 		logger.info("获取书籍信息,跳转到biz-service微服务中,参数:{}", id);
-		return component.getBook(id); 
-	} 
+		return component.getBook(id);
+	}
+
+	@RequestMapping("/getCustomer")
+	String getCustomer(Integer id) {
+		return component.getCustomer(id);
+	}
 }
 
-@Component	
-class BizAPIGatewayComponent { 
-	
+@Component
+class BizAPIGatewayComponent {
+
 	private static final Logger logger = LoggerFactory.getLogger(BizAPIGatewayComponent.class);
-	
- 	@Autowired 
+
+	@Autowired
 	RestTemplate restTemplate;
 
 	@HystrixCommand(fallbackMethod = "getDefaultInfo")
-	public String getBook(Integer id){
+	public String getBook(Integer id) {
 		String result = restTemplate.getForObject("http://biz-service/book/" + id, String.class);
 		logger.info("{}", result);
 		return result;
 	}
-	public String getDefaultInfo(Integer id){
-		return "The Default Book Info";
+
+	public String getDefaultInfo(Integer id) {
+		return "The Default Info";
+	}
+
+	@HystrixCommand(fallbackMethod = "getDefaultInfo")
+	public String getCustomer(Integer id) {
+		String result = restTemplate.getForObject("http://customer-service/customer/" + id, String.class);
+		logger.info("{}", result);
+		return result;
 	}
 }
 
 @Configuration
 class AppConfiguration {
 
-    @LoadBalanced
-    @Bean
-    RestTemplate restTemplate() {
-        return new RestTemplate();
-    }
-}	
+	@LoadBalanced
+	@Bean
+	RestTemplate restTemplate() {
+		return new RestTemplate();
+	}
+}

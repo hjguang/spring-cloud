@@ -1,4 +1,4 @@
-package the.spring.cloud.service.apigatway;
+package the.spring.cloud.apigatway;
 
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;

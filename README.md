@@ -5,5 +5,8 @@ spring-cloud>mvn install -pl eureka-server #多项目用“,"分割
 项目端口
 eureka 8761
 biz-service 8888
+customer-service 8880
 api-gateway 8777
 hystrix 8666
+
+turbine 8555
