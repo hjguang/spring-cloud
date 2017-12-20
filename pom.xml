@@ -87,6 +87,7 @@
 		<module>api-gateway</module>
 		<module>customer-service</module>
 		<module>turbine</module>
+		<module>zipkin-server</module>
 	</modules>
 	<artifactId>spring-cloud</artifactId>
 </project>
