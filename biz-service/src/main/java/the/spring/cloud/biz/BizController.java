@@ -8,6 +8,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.sql.DataSource;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +30,9 @@ import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 public class BizController {
 
 	private static final Logger logger = LoggerFactory.getLogger(BizController.class);
+	
+	@Autowired
+	DataSource dataSource;
 
 	// 初始化书籍列表
 	public static List<Map<String, Object>> bookList = new ArrayList<>();
@@ -52,6 +57,7 @@ public class BizController {
 	@RequestMapping("/{id}")
 	public ModelMap getBookById(@PathVariable("id") Integer id) {
 		logger.info("入参Id:{}", id);
+		System.out.println(dataSource);
 		ModelMap mm = new ModelMap();
 		for (Map<String, Object> book : bookList) {
 			Integer bookId = (Integer) book.get("id");

@@ -1,0 +1,5 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/shopsn?useSSL=false
+    username: root
+    password: 123456
