@@ -1,6 +1,12 @@
 spring:
   application:
     name: biz-service
+  datasource:
+    druid: #数据源配置
+      initial-size: 10
+      min-idle: 10
+      max-active: 100
+        
     
 server:
   port: 8888
@@ -14,3 +20,4 @@ eureka:
 mybatis:
   config-location: classpath:mybatis-config/mybatis-config.xml
   mapper-locations: classpath:mybatis/**/*.xml
+    

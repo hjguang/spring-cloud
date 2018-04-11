@@ -20,7 +20,7 @@ public class DruidDBConfig {
 	@Value("${mybatis.mapper-locations}")
 	private String locationPattern;
 	
-	@Bean
+	@Bean(initMethod="init", destroyMethod="close")
 	public DataSource dataSource() {
 		return DruidDataSourceBuilder.create().build();
 	}

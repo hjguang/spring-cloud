@@ -5,8 +5,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.Page;
+import com.google.gson.Gson;
 
 import the.spring.cloud.biz.entity.Goods;
 import the.spring.cloud.biz.service.GoodsAdminService;
@@ -19,9 +19,8 @@ public class GoodsAdminController {
 	GoodsAdminService goodsAdminService;
 
 	@RequestMapping("/{id}")
-	public String info(@PathVariable("id") Integer id) {
-		Goods goods = goodsAdminService.selectById(id);
-		return JSONObject.toJSONString(goods);
+	public Goods info(@PathVariable("id") Integer id) {
+		return goodsAdminService.selectById(id);
 	}
 
 	@RequestMapping("/list")
