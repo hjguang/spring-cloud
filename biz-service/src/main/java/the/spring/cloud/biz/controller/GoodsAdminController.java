@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.github.pagehelper.Page;
 
+import the.spring.cloud.biz.dao.TransTestDao;
 import the.spring.cloud.biz.entity.Goods;
+import the.spring.cloud.biz.entity.test.TransTest;
 import the.spring.cloud.biz.service.GoodsAdminService;
 
 @RestController
@@ -16,6 +18,9 @@ public class GoodsAdminController {
 
 	@Autowired
 	GoodsAdminService goodsAdminService;
+
+	@Autowired
+	TransTestDao transTestDao;
 
 	@RequestMapping("/{id}")
 	public Goods info(@PathVariable("id") Integer id) {

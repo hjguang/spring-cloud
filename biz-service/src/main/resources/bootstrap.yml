@@ -6,8 +6,8 @@ spring:
       initial-size: 10
       min-idle: 10
       max-active: 100
-  zipkin:
-    base-url: http://localhost:9411
+#  zipkin:
+#    base-url: http://localhost:9411
 #  sleuth:
 #    sampler:
 #      percentage: 1
@@ -17,12 +17,17 @@ server:
 
 eureka:
   client:
+    healthcheck:
+      enabled: true
     service-url:
       defaultZone: http://localhost:8761/eureka/
-  instance:
-    hostname: peer1
-    
+#  instance:
+#    hostname: peer1
+#    lease-renewal-interval-in-seconds: 10
+#    lease-expiration-duration-in-seconds: 30
+
 mybatis:
   config-location: classpath:mybatis-config/mybatis-config.xml
-  mapper-locations: classpath:mybatis/**/*.xml
+  mapper-locations: classpath:mybatis/base/*.xml
+  second-mapper-locations: classpath:mybatis/test/*.xml
     

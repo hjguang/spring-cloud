@@ -23,6 +23,7 @@ public class GoodsAdminServiceImpl implements GoodsAdminService {
     @Override
     public Page<Goods> selectList(Goods param) {
 
-        return goodsAdminDao.selectListByPage(".selectList", param);
+//        return goodsAdminDao.selectListByPage(".selectList", param);
+        return null;
     }
 }
