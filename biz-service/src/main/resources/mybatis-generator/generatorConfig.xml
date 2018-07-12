@@ -10,11 +10,11 @@
 
         <!--链接数据库操作-->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://mysql.rdsmn85ps68m4im.rds.bj.baidubce.com/shopsn"
-                        userId="office"
+                        connectionURL="jdbc:mysql://localhost:3306/test"
+                        userId="root"
                         password="123456"/>
         <!--生成实体-->
-        <javaModelGenerator targetPackage="com.shuangxin.admin.entity"
+        <javaModelGenerator targetPackage="the.spring.cloud.biz.entity.test"
                             targetProject="src/main/java">
             <!-- 在targetPackage的基础上，根据数据库的schema再生成一层package，最终生成的类放在这个package下，默认为false -->
             <property name="enableSubPackages" value="true"/>
@@ -31,7 +31,7 @@
              <property name="enableSubPackages" value="true"/>
          </javaClientGenerator>-->
 
-        <table tableName="db_goods" domainObjectName="Goods"
+        <table tableName="trans_test" domainObjectName="TransTest"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
