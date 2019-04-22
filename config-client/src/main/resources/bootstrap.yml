@@ -1,14 +1,17 @@
 spring:
   application:
     name: config-client
+#  profiles:
+#    active:
+#    - default
+    
   cloud:
     config:
       uri: http://localhost:8888
-      profile: ${profile}
-
+      profile: ${profile} #启动 通过 --profile参数指定
+      
 server:
-  port: 8090
-
+  port: 8889      
 management:
   security:
-    enabled: false
+    enabled: false  

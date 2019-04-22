@@ -1,0 +1,12 @@
+server:
+  port: 8888
+spring:
+#  profiles:
+#    active: native #本地文件读取配置
+  cloud:
+    config:
+      server:
+#        native:
+#          search-locations: file:///d:/config-file/
+        git:
+          uri: https://github.com/hjguang/cloud-config
