@@ -14,7 +14,7 @@ import the.spring.cloud.customer.model.Customer;
  */
 public interface CustomerService {
 
-	public Customer getCustomerById(Integer id);
+	Customer getCustomerById(Integer id);
 	
-	public List<Customer> queryAll();
+	List<Customer> queryAll();
 }
