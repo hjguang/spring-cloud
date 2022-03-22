@@ -6,7 +6,7 @@ spring-cloud>mvn install -pl eureka-server #多项目用“,"分割
 
 项目|端口|介绍
 :----:|:-----:|:-----:
-config-server|8888|配置服务		
+config-server|8888|配置服务	
 			
 			
 			
