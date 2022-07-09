@@ -1,9 +1,0 @@
-spring:
-  application:
-    name: eureka-client
-eureka:
-  client:
-    register-with-eureka: false
-
-  server:
-    name: BIZ-SERVICE

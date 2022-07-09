@@ -1,5 +1,0 @@
-spring:
-  cloud:
-    zookeeper:
-      discovery:
-        register: false
