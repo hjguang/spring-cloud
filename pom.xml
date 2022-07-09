@@ -54,7 +54,7 @@
 
 	<modules>
 		<module>microservice-utils</module>
-		<module>microservice/microservice-rest-movie</module>
+		<module>microservice-rest-movie</module>
 		<module>microservice/microservice-rest-user</module>
 	</modules>
 	<artifactId>spring-cloud</artifactId>
