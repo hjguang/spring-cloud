@@ -2,6 +2,7 @@ package the.spring.cloud.rest.movie.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
@@ -15,6 +16,7 @@ public class Movie implements Serializable {
 
     private static final long serialVersionUID = 5753419118484431979L;
 
+    @Id
     @Field(name = "_id")
     private String movieId;
     private String name;

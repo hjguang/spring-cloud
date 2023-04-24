@@ -26,7 +26,7 @@ public class MovieMongoServiceImpl implements MovieMongoService {
 
     @Override
     public Movie createMovie(Movie movie) {
-        movieRepository.save(movie);
+        movieRepository.insert(movie);
         return movie;
     }
 
