@@ -41,6 +41,13 @@ public class MovieTest {
     }
 
     @Test
+    public void selectById() {
+
+        Movie movie = movieMongoService.selectById("64464024ab52a06560acfd4e");
+        System.out.println(JsonUtils.toJsonString(movie));
+    }
+
+    @Test
     public void list() {
         movieMongoService.list().forEach(item -> System.out.println(item.getName()));
     }

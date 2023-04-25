@@ -1,10 +1,15 @@
 package the.spring.cloud.rest.movie.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Data;
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
+import org.springframework.data.mongodb.core.mapping.FieldType;
+import org.springframework.data.mongodb.core.mapping.MongoId;
+import the.spring.cloud.utils.common.ObjectIdJsonSerializer;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -18,7 +23,8 @@ public class Movie implements Serializable {
 
     @Id
     @Field(name = "_id")
-    private String movieId;
+    @JsonSerialize(using = ObjectIdJsonSerializer.class)
+    private ObjectId movieId; //主键定义为ObjectId
     private String name;
     private String starring;
 

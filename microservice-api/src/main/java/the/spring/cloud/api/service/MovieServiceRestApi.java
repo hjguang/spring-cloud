@@ -21,5 +21,5 @@ public interface MovieServiceRestApi {
             @ApiResponse(responseCode = "422", description = "${api.responseCodes.unprocessableEntity.description}")
     })
     @GetMapping(value = "/movieById/{movieId}", produces = "application/json")
-    MovieDto getMovieById(@PathVariable String movieId);
+    String getMovieById(@PathVariable String movieId);
 }

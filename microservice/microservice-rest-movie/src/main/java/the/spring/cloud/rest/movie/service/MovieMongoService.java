@@ -9,6 +9,8 @@ public interface MovieMongoService {
 
     Movie createMovie(Movie movie);
 
+    Movie selectById(String movieId);
+
     List<Movie> list();
 
     List<Movie> query(String name);

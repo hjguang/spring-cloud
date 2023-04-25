@@ -1,6 +1,7 @@
 package the.spring.cloud.rest.movie.service.impl;
 
 import org.apache.commons.lang3.StringUtils;
+import org.bson.types.ObjectId;
 import org.springframework.data.domain.*;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -28,6 +29,11 @@ public class MovieMongoServiceImpl implements MovieMongoService {
     public Movie createMovie(Movie movie) {
         movieRepository.insert(movie);
         return movie;
+    }
+
+    @Override
+    public Movie selectById(String movieId) {
+        return mongoTemplate.findById(movieId,Movie.class);
     }
 
     @Override
