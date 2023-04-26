@@ -12,7 +12,7 @@ import the.spring.cloud.rest.api.feign.MovieFeignClient;
 import the.spring.cloud.utils.common.JsonUtils;
 
 @RestController
-@RequestMapping("/movie")
+@RequestMapping("/rest-movie")
 public class MovieServiceRest implements MovieServiceRestApi {
 
     @Autowired
