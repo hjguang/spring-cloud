@@ -6,6 +6,7 @@
         <groupId>the.spring.cloud</groupId>
         <artifactId>spring-cloud</artifactId>
         <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../../pom.xml</relativePath>
     </parent>
     <artifactId>microservice-rest-api</artifactId>
 
@@ -39,6 +40,11 @@
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-webflux-ui</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-sleuth</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>the.spring.cloud</groupId>
             <artifactId>microservice-api</artifactId>
