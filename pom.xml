@@ -58,15 +58,20 @@
 				<artifactId>fastjson</artifactId>
 				<version>2.0.8</version>
 			</dependency>
+			<dependency>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok</artifactId>
+				<version>1.18.30</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
 	<modules>
-		<module>microservice-utils</module>
-		<module>microservice/microservice-rest-movie</module>
-		<module>microservice/microservice-rest-user</module>
-        <module>microservice-api</module>
-		<module>microservice/microservice-rest-api</module>
+		<module>ms-api</module>
+		<module>ms-utils</module>
+		<module>microservice/movie-rest</module>
+		<module>microservice/rest-service</module>
+		<module>microservice/user-rest</module>
     </modules>
 	<artifactId>spring-cloud</artifactId>
 </project>
