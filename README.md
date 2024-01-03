@@ -12,7 +12,25 @@ spring-cloud>mvn install -pl project-name #多项目用“,"分割
 			
 			
 			
-			
+mongo用户配置
+===
+```shell
+$ docker exec -it spring-cloud-mongodb-1 mongosh admin
+#用户授权，使用mongo容器用户配置
+#      - MONGO_INITDB_ROOT_USERNAME=admin
+#      - MONGO_INITDB_ROOT_PASSWORD=123456
+admin> db.auth("admin","123456")
+#切换到业务数据库
+admin> use movies
+#添加用户
+movies> db.createUser({
+... user:"spring_cloud",pwd:"123456",
+... roles:[{role:"readWrite",db:"movies"}]
+... })
+
+```
+
+
 			
 			
 			
